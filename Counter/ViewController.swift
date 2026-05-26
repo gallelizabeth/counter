@@ -2,23 +2,29 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
-    @IBOutlet weak var CounterLable: UILabel!
-    
+    @IBOutlet private weak var counterLabel: UILabel!
     private var counter: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CounterLable.text = "Значение счётчика: \(counter)"
+        
+        updateCounterLabel()
     }
     
     
-    @IBAction func clickButton(_ sender: Any) {
-            counter += 1
-            CounterLable.text = "Значение счётчика: \(counter)"
-        }
-
+    @IBAction private func didToppedCountButton(_ sender: Any) {
+        counter += 1
+        
+        updateCounterLabel()
+    }
+    
+    
+    private func updateCounterLabel() {
+        counterLabel.text = "Значение счётчика: \(counter)"
+    }
 
 }
 
